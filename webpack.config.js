@@ -13,7 +13,9 @@ exports.default = {
       {
         test: /\.js$/,
         use: [
-          path.join(__dirname, '/loaders/simple-loader')
+          path.join(__dirname, '/loaders/loader1'),
+          path.join(__dirname, '/loaders/loader2'),
+          path.join(__dirname, '/loaders/loader3')
         ]
       },
       {
