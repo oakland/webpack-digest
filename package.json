@@ -4,6 +4,7 @@
   "description": "In depth understanding of webpack.",
   "main": "index.js",
   "scripts": {
+    "build": "rm -rf dist && node bin/compile",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,7 +31,7 @@
     "sass-loader": "^10.0.4",
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
-    "webpack": "^5.3.2"
+    "webpack": "^4.44.2"
   },
   "dependencies": {
     "sass": "^1.28.0"
