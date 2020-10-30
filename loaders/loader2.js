@@ -1,9 +1,12 @@
-module.exports = function simpleLoader(content) {
-  // return content.replace(/world2/i, 'loader2');
-  const callback = this.async();
-  setTimeout(() => {
-    console.log('loader2: ', this.resourcePath);
-    console.timeEnd();
-    callback(null, content.replace(/world2/i, 'loader2'));
-  }, 2000);
-}
+function loader2(content) {};
+
+loader2.pitch = function(remainingRequest, precedingRequest, data) {
+  console.log('remainingRequest: ', remainingRequest);
+  console.log('precedingRequest: ', precedingRequest);
+  console.log('data: ', data);
+  // console.log( 'module.exports = require(' + JSON.stringify('!!' + remainingRequest) + ');');
+
+  return 'module.exports = require(' + JSON.stringify('!!' + remainingRequest) + ');';
+};
+
+module.exports = loader2;

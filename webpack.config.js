@@ -11,6 +11,14 @@ exports.default = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        use: [
+          path.join(__dirname, '/loaders/loader1'),
+          path.join(__dirname, '/loaders/loader2'),
+          path.join(__dirname, '/loaders/loader3')
+        ]
+      },
+      {
         test: /\.scss$/,
         use: [
           'style-loader',
