@@ -1,4 +1,5 @@
-import headerTxt from './headerTxt.js';
+//import headerTxt from './headerTxt.js';
+import headerTxt from "!!../loaders/loader3.js!./headerTxt.js";
 import box from './img/box.png';
 import styles from './styles.scss';
 
