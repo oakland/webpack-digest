@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 exports.default = {
-  mode: 'development',
+  mode: 'development', // 为了方便查看打包后的内容，我们采用 development mode
   entry: './src/index.js',
   output: {
     filename: 'main.js',
@@ -14,15 +14,21 @@ exports.default = {
         test: /\.js$/,
         use: [
           path.join(__dirname, '/loaders/simple-loader')
-          // path.resolve(__dirname, './loaders/simple-loader') // 这种写法也可以
+        ]
+      },
+      {
+        test: /\.png$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'img'
+            }
+          }
         ]
       }
     ]
   },
-  // 也可以通过下面的方式引入本地 loader
-  // resolveLoader: {
-  //   modules: [path.resolve(__dirname, 'loaders'), 'node_modules']
-  // }
   plugins: [
     new HtmlWebpackPlugin()
   ]
