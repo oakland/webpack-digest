@@ -20,8 +20,9 @@ exports.default = {
         test: /\.png$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: 'url-loader',
             options: {
+              limit: 1500, // 改成 2000 后会被编码成 base64
               outputPath: 'img'
             }
           }
