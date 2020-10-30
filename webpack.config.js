@@ -11,11 +11,11 @@ exports.default = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.scss$/,
         use: [
-          path.join(__dirname, '/loaders/loader1'),
-          path.join(__dirname, '/loaders/loader2'),
-          path.join(__dirname, '/loaders/loader3')
+          'style-loader',
+          'css-loader',
+          'sass-loader'
         ]
       },
       {
