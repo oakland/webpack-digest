@@ -1,25 +1,15 @@
-// https://webpack.js.org/contribute/plugin-patterns/#root
-class MyPlugin {
-  constructor() {
-    this.startTime = Date.now();
-    this.prevTimestamps = new Map();
-  }
-  apply(compiler) {
-    compiler.hooks.emit.tapAsync('MyPlugin', (compilation, callback) => {
-      const changedFiles = Array.from(compilation.fileTimestamps.keys()).filter(
-        watchfile => {
-          return (
-            (this.prevTimestamps.get(watchfile) || this.startTime) <
-            (compilation.fileTimestamps.get(watchfile) || Infinity)
-          );
-        }
-      );
-      console.log('changedFiles: ', changedFiles);
+// https://webpack.js.org/concepts/plugins/#root
+const pluginName = 'ConsoleLogOnBuildWebpackPlugin';
 
-      this.prevTimestamps = compilation.fileTimestamps;
-      callback();
+class ConsoleLogOnBuildWebpackPlugin {
+  apply(compiler) {
+    compiler.hooks.run.tap(pluginName, compilation => {
+      console.log(' --- The webpack build process is starting!!! --- ');
     });
+    // compiler.hooks.emit.tapAsync(pluginName, compilation => {
+    //   console.log(' --- The webpack build process is over!!! --- ');
+    // });
   }
 }
 
-module.exports = MyPlugin;
+module.exports = ConsoleLogOnBuildWebpackPlugin;
