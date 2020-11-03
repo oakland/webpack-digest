@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const config = require('../webpack.config');
 
-webpack(config.default).run((err, stats) => {
+const compiler = webpack(config.default); // 创建一个 compiler
+compiler.run((err, stats) => {
   if(err) {
     console.log('err');
   };
