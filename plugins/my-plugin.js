@@ -1,11 +1,14 @@
-const pluginName = 'ConsoleLogOnBuildWebpackPlugin';
+const text = 'balabala';
 
-class ConsoleLogOnBuildWebpackPlugin {
+class MyPlugin {
   apply(compiler) {
-    compiler.hooks.compilation.tap(pluginName, compilation => {
-      console.log('compilation: ', Object.keys(compilation))
+    compiler.hooks.emit.tap('MyPlugin', compilation => {
+      compilation.assets['text.txt'] = {
+        source: () => text,
+        size: () => text.length
+      }
     });
   }
 }
 
-module.exports = ConsoleLogOnBuildWebpackPlugin;
+module.exports = MyPlugin;
