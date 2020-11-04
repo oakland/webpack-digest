@@ -1,0 +1,2 @@
+AsyncSeriesBailHook 和 AsyncParallelBailHook 的区别在于熔断的内容不同。
+前者熔断的是注册上的函数，而后者熔断的是最后的回调函数。
