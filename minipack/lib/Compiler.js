@@ -1,3 +1,4 @@
+
 const fs = require('fs');
 const path = require('path');
 const { getAST, getDependencies, transform } = require('./parser');
@@ -13,11 +14,11 @@ class Compiler {
   run() {
     const entryModule = this.buildModule(this.entry, true);
     this.modules.push(entryModule);
-    this.modules.forEach(_module => {
-      _module.dependencies.forEach(dependency => {
+    for(let i = 0; i < this.modules.length; i++) {
+      this.modules[i].dependencies.forEach(dependency => {
         this.modules.push(this.buildModule(dependency, false));
       });
-    });
+    }
     this.emitFiles();
   }
 

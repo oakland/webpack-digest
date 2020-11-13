@@ -1,1 +1,3 @@
-export const greeting = name => `Hello ${name}.`;
+import { name } from './name.js';
+
+export const greeting = () => `Hello ${name}.`;

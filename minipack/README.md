@@ -1,7 +1,7 @@
 ``` javascript
 // Compiler
 class Compiler {
-  constructor(options) {...} 
+  constructor(options) {...}
   run() {...}
   buildModule() {...}
   emitFiles() {...}
